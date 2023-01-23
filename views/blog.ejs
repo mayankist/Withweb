@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WithWeb</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/person.css">
+  <link rel="stylesheet" type="text/css" href="/css/blog.css">
+  <link rel="stylesheet" type="text/css" href="/css/slick.css">
+  <link rel="stylesheet" type="text/css" href="/css/slick-theme.css">
+  <script src="https://kit.fontawesome.com/8e82e704c0.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/anime.min.js"></script>
+  <script src="/js/slick.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+  <div class="row" style="width: 100%;">
+    <div class="col-md-12 c1" style="width: 100%;padding: 1%;">
+      Want Your Personal Website Or A Professional One, We Are Here For You
+    </div>
+    <div class="col-md-12">
+      <hr class="navhr" style="height: 0.5px;">
+    </div>
+    <div id="navbar" style="width:100%;">
+    <div class="col-md-12 c2">
+      <span id="welmsg">Welcome To WithWeb</span>
+      <a class="navbar-brand" href="/" type="button" style="margin:0% 10%;">
+        <img src="/pics/l1.jpeg">
+      </a>
+      <span id="loginuser">
+        <% if(!currentUser){ %>
+        <a href="/user">Sign In</a>
+        <% } else { %>
+        <a href="/logout">Logout</a>
+        <% } %>
+        <i class="fa fs-fw"></i> | <i class="fa fs-fw"></i>
+        <a href="/blog" style="color:rgb(60, 60, 60);">Newsletter</a>
+      </span>
+      <hr class="navhr">
+    </div>
+    <div class="col-md-12">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" style="font-weight: 1000;">Blog Page</a>
+        </li>
+        <% if(currentUser){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/<%= currentUser._id %>"><%= currentUser.username %></a>
+        </li>
+        <% } %>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#navabout">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product" tabindex="-1" aria-disabled="true">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/innovation">Innovation</a>
+        </li>
+
+        <% if(!currentUser){ %>
+          <li class="nav-item signhide">
+            <a class="nav-link" href="/user">Sign In</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item signhide">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        <% } %>
+      </ul>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="fa fa-ellipsis-v" style="transform: rotateZ(90deg);color: black;font-size: 25px;"></span>
+      </button>
+    </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container mainbox" id="mainbox">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 id="jobst">
+        " the ones who are crazy enough to think that they can change the world, are the ones who do "
+        <br>
+        <span style="font-size: 16px;font-weight: 600;">- Steve Jobs</span>
+      </h4>
+    </div>
+  </div>
+</div>
+
+<div class="blogbox">
+  <div class="container">
+    <form class="searchFormMain" action="/blog" method="GET" style="display: inline;">
+      <input class="compostbtn blogbtn" type="text" name="search" placeholder="Search here..." aria-label="Search" autocomplete="on" style="transform: translateY(16.4px);border-radius: 0.2rem;">
+      <button class="btn compostbtn blogbtn" type="submit" value="Search"><i class="fa fa-search fa-fw"></i></button>
+    </form>
+
+    <div id="mydrop1">
+    <form action="/blog" method="GET" style="display: inline;">
+      <input type="text" name="sortby" value="new" class="d-none">
+      <button type="submit" class="btn compostbtn blogbtn">Recent</button>
+    </form>
+    <form action="/blog" method="GET" style="display: inline;">
+      <input type="text" name="sortby" value="mostrated" class="d-none">
+      <button type="submit" class="btn compostbtn blogbtn">Most Liked</button>
+    </form>
+    </div>
+
+    <div class="dropdown" id="mydrop2">
+      <button class="btn compostbtn blogbtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-exchange-alt" style="transform: rotateZ(90deg);"></i>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form action="/blog" method="GET" class="dropdown-item">
+          <input type="text" name="sortby" value="new" class="d-none">
+          <button type="submit" class="btn">Recent</button>
+        </form>
+        <form action="/blog" method="GET" class="dropdown-item">
+          <input type="text" name="sortby" value="mostrated" class="d-none">
+          <button type="submit" class="btn">Most Liked</button>
+        </form>
+      </div>
+    </div>
+
+    <button class="btn compostbtn blogbtn" data-toggle="modal" data-target="#postblog">Add Your Idea</button>
+    <% if(blog.blogCount > 0){ %>
+    <h5 class="shopCount">
+      <% if(blog.blogCount == 1){ %>
+        <%= blog.blogCount %> thought
+      <% }else{ %>
+        <%= blog.blogCount %> thoughts
+      <% } %>
+    </h5>
+    <% } %>
+    <div class="shopCount">
+    <% if(noMatch == 1){ %>
+      <h5><%= noMatch %> thought</h5>
+    <% }else if(noMatch > 1){ %>
+      <h5><%= noMatch %> thoughts</h5>
+    <% }else{ %>
+        <h5><%= noMatch %></h5>
+      <% } %>
+  </div>
+    <!-- <br><br><br> -->
+    <div class="row mainblogbox">
+      <% blog.forEach(function(data){ %>
+      <div class="col-md-4 col-12">
+        <div class="card shadow" style="padding: 10px;">
+          <div id="inbox1">
+            <h4><%= data.title %></h4>
+            <span><%- data.text.substring(0, 100) %>... <span data-toggle="modal" data-target="#showblog<%= data.id %>" style="cursor: pointer;"><b>read more</b></span></span>
+          </div>
+          <hr>
+          <div class="caption">
+            <form action="/blog/<%= data._id %>/like" method="POST" style="display: inline;">
+              <div class="btn-group">
+                <% if (currentUser && data.likes.some(function (like) {
+                  return like.equals(currentUser._id)
+                })) { %>
+                <button>
+                  <h6><i class="fas fa-heart"></i> <%= data.likes.length %></h6>
+                </button>
+                <% } else { %>
+                <button>
+                  <h6><i class="far fa-heart"></i> <%= data.likes.length %></h6>
+                </button>
+                <% } %>
+              </div>
+            </form>
+            <% if(currentUser && data.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+            <form action="/blog/<%=data._id%>?_method=DELETE" method="POST" style="display:inline;">
+              <button type="submit" class="close" value="Delete" style="outline:none;">
+                <span>&times;</span>
+              </button>
+            </form>
+            <% } %>
+          </div>    
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</div>
+
+
+<div class="b5">
+  <div class="row">
+    <div class="col-md-12">
+      Contact us <a href="https://www.linkedin.com/company/withweb/" target="_blank"><i class="fa fa-linkedin fa-fw"></i></a>
+      <span id="lastcopy1">
+        <i class="fa fa-fw"></i> | <i class="fa fa-fw"></i>
+      </span>
+      <span id="lastcopy2"><br></span>
+         WithWeb <i class="fa fa-copyright fa-fw" data-toggle="collapse" data-target="#mydeletebtn"></i> 2020
+    </div>    
+  </div>
+</div>
+
+<!-- Modals============================== -->
+<div class="modal fade" id="postblog" tabindex="-1" role="dialog" aria-labelledby="postblogLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">Add Your Idea</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/blog" method="POST">
+          <div class="form-group">
+            <input class="form-control" type="text" name="data[title]" placeholder="title" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" maxlength="5000" rows="10" type="text" name="data[text]" placeholder="Write here ..." required></textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-lg btn-secondary btn-block" style="box-shadow: none;border:2px solid grey;">Submit!</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% blog.forEach(function(data){ %>
+<div class="modal fade" id="showblog<%= data.id %>" tabindex="-1" role="dialog" aria-labelledby="showblogLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel"><%= data.title %></h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="letter-spacing: 1px;text-align: justify;">
+        <h6><%= data.text %></h6>
+      </div>
+      <div class="modal-footer">
+        <% if(currentUser && data.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+        <a href="/blog/<%= data._id %>/edit" style="display:inline;">
+          <button class="btn btn-secondary"> edit <i class="fa fa-edit" style="color: black;"></i></button>
+        </a>
+        <% } %>
+        <h6 style="float: left;font-weight: 600;" class="btn btn-secondary">By <%= data.author.username %> | <%= moment(data.createdAt).fromNow() %></h6>
+      </div>
+    </div>
+  </div>
+</div>
+<% }); %>
+
+<div class="modal fade" id="navabout" tabindex="-1" role="dialog" aria-labelledby="mymodal1Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="padding: 30px;">
+        <h5><b style="font-size: 25px;">WithWeb</b> is a community of web developers, tech enthusiasts and many wandering souls with a bag full of ideas. Here we welcome everyone to share their ideas and make them possible in the form of websites. <br><br> As of now we got a few members, but hoping for making these chaos of minds into a huge sector of services and websites. Afterall we all know that, hope is always good! So join our community WithWeb and if you are over with the other things, lets build websites.</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modals============================== -->
+
+<script type="text/javascript" src="/js/person.js"></script>
+<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>

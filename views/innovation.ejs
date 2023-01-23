@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WithWeb</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/person.css">
+  <link rel="stylesheet" type="text/css" href="/css/slick.css">
+  <link rel="stylesheet" type="text/css" href="/css/slick-theme.css">
+  <script src="https://kit.fontawesome.com/8e82e704c0.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/anime.min.js"></script>
+  <script src="/js/slick.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+  <div class="row" style="width: 100%;">
+    <div class="col-md-12 c1">
+      Want Your Personal Website Or A Professional One, We Are Here For You
+      <!-- <a href="tel:9644698211" style="text-decoration: none;"><i class="fa fa-phone fa-fw"></i> 9644698211</a> -->
+    </div>
+    <div class="col-md-12">
+      <hr class="navhr" style="height: 0.5px;">
+    </div>
+    <div id="navbar" style="width:100%;">
+    <div class="col-md-12 c2">
+      <span id="welmsg">Welcome To WithWeb</span>
+      <!-- <button class="btn btn-secondary">Subscribe</button>
+      <button class="btn btn-secondary disabled">Subscribe</button> -->
+      <a class="navbar-brand" href="/" type="button" style="margin:0% 10%;">
+        <img src="/pics/l1.jpeg">
+      </a>
+      <span id="loginuser">
+        <% if(!currentUser){ %>
+        <a href="/user">Sign In</a>
+        <% } else { %>
+        <a href="/logout">Logout</a>
+        <% } %>
+        <i class="fa fs-fw"></i> | <i class="fa fs-fw"></i>
+        <a href="/blog" style="color:rgb(60, 60, 60);">Newsletter</a>
+      </span>
+      <hr class="navhr">
+    </div>
+    <div class="col-md-12">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav justify-content-center">
+        <% if(currentUser){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/<%= currentUser._id %>"><%= currentUser.username %></a>
+        </li>
+        <% } %>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#navabout">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product" tabindex="-1" aria-disabled="true">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog">Blogs</a>
+        </li>
+
+        <% if(!currentUser){ %>
+          <li class="nav-item signhide">
+            <a class="nav-link" href="/user">Sign In</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item signhide">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        <% } %>
+      </ul>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="fa fa-ellipsis-v" style="transform: rotateZ(90deg);color: black;font-size: 25px;"></span>
+      </button>
+    </div>
+    </div>
+  </div>
+</nav>
+
+<div class="innobox" id="mainbox">
+
+<!-- <h1>Everything has a story</h1>
+<h4>we want it to be initiated by you, cause you are the one making it</h4> -->
+<h1>INNOVATION</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="thumbnail">
+        <h5>The random things we do daily but if we go away from that regular line of work and make things easy, that is when we call it an innovation.</h5>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="thumbnail" style="padding: 54px;background: url('/pics/pic3.jpg');background-size: cover;background-position: 50% 90%;text-align: center;">
+        Tech We Think
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="thumbnail">
+        <h3>Delivery Services</h3>
+        <h5>The initiative for tier three cities in food delivery services</h5>
+        <br>
+        <p>The online food delivery market is increasing all over our country and with the pace the number of opportunities are born. But if we see today's scenario the service has been in the metros and majorily in tier two cities. <br>Imagine what it will effect if introduced in all the cities with the population of 1 lakh or more. In the current situation with the lockdown all over, we can only think of our favourite restaurants and shop vendors in our city leaning in our beds.<br> So it will play a mojor role if introduced everywhere. And we all know, it's a huge deal when everything is about food. So take a glimpse of Foodie ad let us know what more can be introduced here.</p>
+        <!-- <button class="btn compostbtn shadow">More</button> -->
+      </div>
+    </div>
+    <div class="col-md-6">
+      <a href="https://fooddie.herokuapp.com" target="_blank">
+        <img src="/pics/foodie.png" style="width:100%;margin-top: 0%;border:5px solid #4b88c2;">
+      </a>
+    </div>
+    <div class="col-md-6">
+      <div class="thumbnail" style="padding:7.8%;">
+        <p>The user interface system is designed with every expect of an user being easy to use and accesible for everyone, till then enjoy this prototype.</p>
+        <a href="https://fooddie.herokuapp.com" target="_blank">
+          <button class="btn compostbtn shadow">More</button>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="thumbnail">
+        <h3>Accomodation</h3>
+        <h5>Rooms available for everyone and anywhere</h5>
+        <br>
+        <p>We are working on a platform for searching rooms anywhere if the owner have decided to rent near you. This is the engagement of small cities to the big metros where the efforts are negligible for the ease of searching room for a student. <br> The varieties and choices ofcourse wont match all the time but what we can do is to help you searching for the appropriate room you are looking for. <br> So here's Roomy our room search platform for anyone and anywhere, you just need to choose for what you are looking for and click a search button.</p>
+        <!-- <a href="https://roomantic.herokuapp.com" target="_blank">
+          <img src="/pics/roomy.png" class="shadow" style="width:60%;transform:translate(200px,200px);margin-top:-180px">
+        </a> -->
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="thumbnail" style="padding:5.5%;">
+        <p>This is mainly a step ahead to help the current generation to adjust to an environment without any chaos. Since we all have been through the trauma of searching rooms anywhere we go. So let's change it!</p>
+        <a href="https://roomantic.herokuapp.com" target="_blank">
+          <button class="btn compostbtn shadow">More</button>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <a href="https://roomantic.herokuapp.com" target="_blank">
+        <img src="/pics/roomy.png" style="width:100%;margin-top: 0%;border:5px solid #4b88c2;">
+      </a>
+    </div>
+    <div class="col-md-4 innew">
+      <img src="/pics/pic8.jpg">
+    </div>
+    <div class="col-md-8">
+      <div class="thumbnail">
+        <h2>Fashion</h2>
+        <h5>An initiative for our local tailors to sustain in this pandemic.</h5>
+        <br>
+        <p>Have you noticed the local tailors in this lockdown, and thought of how they manage to live in recent conditions. Their livelihood is actually perished and so as with each local well being. But in order to maintain the pace with our motive we build up the chain of tailoring services through a system where the work is utilised for the purpose of online fashion market. Since the growth of online reatil services in the lifestyle sector, the demand is huge and in the race of various multinational brands the local fashion sense has to be restored. There is approx 60% population in the subcontinent who don't use such retail services, so with the introduction of a local taste can help us to shrink this boundary.</p>
+        <a href="https://www.linkedin.com/company/withweb/">
+          <button class="btn compostbtn shadow">More on Linked<i class="fa fa-linkedin fa-fw"></i></button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="b5">
+  <div class="row">
+    <div class="col-md-12">
+      Contact us <a href="https://www.linkedin.com/company/withweb/" target="_blank"><i class="fa fa-linkedin fa-fw"></i></a>
+      <span id="lastcopy1">
+        <i class="fa fa-fw"></i> | <i class="fa fa-fw"></i>
+      </span>
+      <span id="lastcopy2"><br></span>
+         WithWeb <i class="fa fa-copyright fa-fw" data-toggle="collapse" data-target="#mydeletebtn"></i> 2020
+    </div>    
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="navabout" tabindex="-1" role="dialog" aria-labelledby="mymodal1Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="padding: 30px;">
+        <h5><b style="font-size: 25px;">WithWeb</b> is a community of web developers, tech enthusiasts and many wandering souls with a bag full of ideas. Here we welcome everyone to share their ideas and make them possible in the form of websites. <br><br> As of now we got a few members, but hoping for making these chaos of minds into a huge sector of services and websites. Afterall we all know that, hope is always good! So join our community WithWeb and if you are over with the other things, lets build websites.</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/js/person.js"></script>
+<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WithWeb</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/person.css">
+  <link rel="stylesheet" type="text/css" href="/css/slick.css">
+  <link rel="stylesheet" type="text/css" href="/css/slick-theme.css">
+  <script src="https://kit.fontawesome.com/8e82e704c0.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/anime.min.js"></script>
+  <script src="/js/slick.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+  <div class="row" style="width: 100%;">
+    <div class="col-md-12 c1" style="width: 100%;padding: 1%;">
+      Want Your Personal Website Or A Professional One, We Are Here For You
+      <!-- <a href="tel:9644698211" style="text-decoration: none;"><i class="fa fa-phone fa-fw"></i> 9644698211</a> -->
+    </div>
+    <div class="col-md-12">
+      <hr class="navhr" style="height: 0.5px;">
+    </div>
+    <div id="navbar" style="width:100%;">
+    <div class="col-md-12 c2">
+      <span id="welmsg">Welcome To WithWeb</span>
+      <!-- <button class="btn btn-secondary">Subscribe</button>
+      <button class="btn btn-secondary disabled">Subscribe</button> -->
+      <a class="navbar-brand" href="/" type="button" style="margin:0% 10%;">
+        <img src="/pics/l1.jpeg">
+      </a>
+      <span id="loginuser">
+        <% if(!currentUser){ %>
+        <a href="/user">Sign In</a>
+        <% } else { %>
+        <a href="/logout">Logout</a>
+        <% } %>
+        <i class="fa fs-fw"></i> | <i class="fa fs-fw"></i>
+        <a href="/blog" style="color:rgb(60, 60, 60);">Newsletter</a>
+      </span>
+      <hr class="navhr">
+    </div>
+    <div class="col-md-12">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav justify-content-center">
+        <% if(currentUser){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/<%= currentUser._id %>"><%= currentUser.username %></a>
+        </li>
+        <% } %>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#navabout">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/innovation">Innovation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#showuser">Members</a>
+        </li>
+
+        <% if(!currentUser){ %>
+          <li class="nav-item signhide">
+            <a class="nav-link" href="/user">Sign In</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item signhide">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        <% } %>
+      </ul>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="fa fa-ellipsis-v" style="transform: rotateZ(90deg);color: black;font-size: 25px;"></span>
+      </button>
+    </div>
+    </div>
+  </div>
+</nav>
+
+<div class="productbox" id="mainbox">
+
+<!-- <h1>Everything has a story</h1>
+<h4>we want it to be initiated by you, cause you are the one making it</h4> -->
+
+<div class="b2">
+  <div class="row">
+    <div class="col-md-12" id="myproduct1">
+      <h1 style="padding: 2%;">
+        PRODUCTS
+      </h1>
+      <% if(currentUser && currentUser.isAdmin){ %>
+        <button class="btn compostbtn shadow" data-toggle="modal" data-target="#postproduct">New</button>
+      <% } %>
+    </div>
+
+    <% product.forEach(function(data){ %>
+    <% if(data.pro=="pro"){ %>
+    <div class="col-md-7 c1">
+      <h2 style="color:white;">
+        <%= data.name %>
+        <br id="mybr1">
+        <a href="<%= data.url %>" target="_blank">
+          <button class="btn compostbtn shadow btn1">Go to website</button>
+        </a>
+        <% if(currentUser && currentUser.isAdmin){ %>
+        <a href="/product/<%= data.id %>">
+          <button class="btn compostbtn shadow btn2"> Open 
+            <i class="fa fa-chevron-circle-right fa-fw"></i>
+          </button>
+        </a>
+        <% } %>
+      </h2>
+      <br>
+      <p>
+        <%= data.desc %>
+      </p>
+    </div>
+    <div class="col-md-5 c2">
+        <a href="<%= data.url %>" target="_blank">
+          <img src="<%= data.image %>" style="border:2px solid #4b88c2;">
+        </a>
+    </div>
+    <% }else{ %>
+    <% } %>
+    <% }); %>
+  </div>
+</div>
+
+<!-- <div data-scroll-speed="-20">
+  <img class="myarrow" src="/pics/c2.png">
+</div> -->
+
+<div class="b2">
+  <div class="row">
+    <div class="col-md-12" id="mywebsite1">
+      <h1 style="padding: 2%;">
+        OUR WORK
+      </h1>
+    </div>
+
+    <% product.forEach(function(data){ %>
+    <% if(data.pro=="work"){ %>
+    <div class="col-md-7 c1">
+      <h2 style="color:white;">
+        <%= data.name %>
+        <a href="<%= data.url %>" target="_blank">
+          <button class="btn compostbtn shadow btn1">Go to website</button>
+        </a>
+        <% if(currentUser && currentUser.isAdmin){ %>
+        <a href="/product/<%= data.id %>">
+          <button class="btn compostbtn shadow btn2"> Open 
+            <i class="fa fa-chevron-circle-right fa-fw"></i>
+          </button>
+        </a>
+        <% } %>
+
+      </h2>
+      <br>
+      <p>
+        <%= data.desc %>
+      </p>
+    </div>
+    <div class="col-md-5 c2">
+        <a href="<%= data.url %>" target="_blank">
+          <img src="<%= data.image %>" style="border:2px solid #4b88c2;">
+        </a>
+    </div>
+    <% }else{ %>
+    <% } %>
+    <% }); %>
+    <!-- <div class="col-md-12" id="mywebsite1">
+      <h2>
+        OUR WORK
+      </h2>
+    </div>
+    <% product.forEach(function(data){ %>
+    <% if(data.pro=="work"){ %>
+    <div class="col-md-4">
+      <div class="card shadow">
+        <a href="<%= data.url %>" target="_blank">
+          <img src="<%= data.image %>">
+        </a>
+      </div>
+      <h5><%= data.name %></h5>
+      <h5 data-toggle="modal" data-target="#mymodal<%= data.id %>" type="button" class="anotherh5">more</h5>
+    </div>
+    <% }else{ %>
+    <% } %>
+    <% }); %> -->
+  </div>
+</div>
+
+<!-- <div style="z-index: 5;position: relative;margin-top: 30px;" data-scroll-speed=-20>
+  <img class="myarrow" src="/pics/c2.png">
+</div> -->
+
+</div>
+
+<div class="b5">
+  <div class="row">
+    <div class="col-md-12">
+      Contact us <a href="https://www.linkedin.com/company/withweb/" target="_blank"><i class="fa fa-linkedin fa-fw"></i></a>
+      <span id="lastcopy1">
+        <i class="fa fa-fw"></i> | <i class="fa fa-fw"></i>
+      </span>
+      <span id="lastcopy2"><br></span>
+         WithWeb <i class="fa fa-copyright fa-fw" data-toggle="collapse" data-target="#mydeletebtn"></i> 2020
+    </div>    
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="postproduct" tabindex="-1" role="dialog" aria-labelledby="postproductLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">Add Product / Work</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/product" method="POST">
+          <div class="form-group">
+            <input class="form-control" type="text" name="data[name]" placeholder="name" required>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="data[image]" placeholder="image" required>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" name="data[url]" placeholder="URL" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" maxlength="500" rows="5" type="text" name="data[desc]" placeholder="Description" required></textarea>
+          </div>
+          <!-- <div class="form-group">
+            <textarea class="form-control" maxlength="500" rows="5" type="text" name="data[tech]" placeholder="Technology Used" required></textarea>
+          </div> -->
+          <div class="form-group">
+            <input type="radio" id="java1" name="data[pro]" value="pro">
+            <label for="java1">Product</label>
+            <i class="fa fa-fw"></i>
+            <input type="radio" id="java1" name="data[pro]" value="work">
+            <label for="java1">Work</label>
+            <!-- <i class="fa fa-fw"></i>
+            <input type="radio" id="java1" name="data[pro]" value="upcoming">
+            <label for="java1">Upcoming</label> -->
+          </div>
+          <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="showuser" tabindex="-1" role="dialog" aria-labelledby="mymodal1Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">All Users</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <% user.forEach(function(data){ %>
+          <div class="row">
+            <div class="col-md-6 col-6">
+              <h6 style="text-align: center;">
+                <a href="/user/<%= data.id %>" style="color:rgb(60,60,60);"><%= data.name %></a>
+              </h6>
+            </div>
+            <div class="col-md-6 col-6">
+              <h6 style="float: left;">| <%= moment(data.joined).format("LL") %></h6><br>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="navabout" tabindex="-1" role="dialog" aria-labelledby="mymodal1Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="padding: 30px;">
+        <h5><b style="font-size: 25px;">WithWeb</b> is a community of web developers, tech enthusiasts and many wandering souls with a bag full of ideas. Here we welcome everyone to share their ideas and make them possible in the form of websites. <br><br> As of now we got a few members, but hoping for making these chaos of minds into a huge sector of services and websites. Afterall we all know that, hope is always good! So join our community WithWeb and if you are over with the other things, lets build websites.</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/js/person.js"></script>
+<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>
